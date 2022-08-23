@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spirngCloud</artifactId>
+        <groupId>org.xaunxie</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>HystrixServiceDashboard</artifactId>
+
+    <properties>
+        <maven.compiler.source>18</maven.compiler.source>
+        <maven.compiler.target>18</maven.compiler.target>
+    </properties>
+
+
+    <dependencies>
+        <!--监控面板-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+        </dependency>
+
+        <!--此处提供监控面板-->
+        <!--还要在其他模块开启允许被监控才能取监控其他模块-->
+        <!--被监控的模块需要导入
+        spring-boot-starter-actuator
+        和spring-cloud-starter-netflix-hystrix
+        使用@EnableHystrix ,添加 hystrix监控配置,
+        management:
+          endpoints:
+            web:
+              exposure:
+                include: "*"
+        -->
+
+    </dependencies>
+</project>

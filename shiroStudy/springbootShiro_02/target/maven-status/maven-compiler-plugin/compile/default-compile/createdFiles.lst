@@ -1,0 +1,8 @@
+com\xuanxie\service\UserService.class
+com\xuanxie\SpringbootShiro02Application.class
+com\xuanxie\config\ShiroConfig.class
+com\xuanxie\config\UserRealm.class
+com\xuanxie\mapper\UserMapper.class
+com\xuanxie\controller\MyController.class
+com\xuanxie\service\UserSeviceImpl.class
+com\xuanxie\pojo\Users.class

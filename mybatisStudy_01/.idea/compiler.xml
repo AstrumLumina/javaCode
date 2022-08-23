@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dynamicSQL_07" />
+        <module name="mybatisModule_01" />
+        <module name="mybatisOptimize_02" />
+        <module name="sqlAnnotation_5" />
+        <module name="mybatisLog_04" />
+        <module name="inconsistentName_03" />
+        <module name="complexQuery_06" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

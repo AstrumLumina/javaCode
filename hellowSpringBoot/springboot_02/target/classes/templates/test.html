@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"><!--导入html约束-->
+
+<head>
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+</head>
+
+<body>
+<h1>hello thymeleaf html test</h1>
+<p>Welcome to our grocery store!</p>
+<P>
+    取到的参数为
+<span th:text="${msg}"></span>
+</P>
+
+</body>
+
+</html>

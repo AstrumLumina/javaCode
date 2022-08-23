@@ -1,0 +1,5 @@
+D:\javaCode\spirngCloud\springcloud-api-feign\src\main\java\com\xuanxie\springcloud\config\FallbackFactoryConfig.java
+D:\javaCode\spirngCloud\springcloud-api-feign\src\main\java\com\xuanxie\springcloud\pojo\Dept.java
+D:\javaCode\spirngCloud\springcloud-api-feign\src\main\java\com\xuanxie\springcloud\service\DeptServiceCallback.java
+D:\javaCode\spirngCloud\springcloud-api-feign\src\main\java\com\xuanxie\springcloud\service\DeptClienService.java
+D:\javaCode\spirngCloud\springcloud-api-feign\src\main\java\com\xuanxie\springcloud\service\DeptServiceFallbackFactory.java

@@ -1,0 +1,7 @@
+com\xuanxie\controller\BookController.class
+com\xuanxie\filter\MyRequest.class
+com\xuanxie\pojo\Books.class
+com\xuanxie\service\BooksServiceImpl.class
+com\xuanxie\dao\BooksMapper.class
+com\xuanxie\service\BooksService.class
+com\xuanxie\filter\GenericEncodingFilter.class

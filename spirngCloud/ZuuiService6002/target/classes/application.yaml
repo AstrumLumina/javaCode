@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: ZuuiService6002
+server:
+  port: 6002
+
+#配置Eureak
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.registerCenterOne.com:9001/eureka/,http://www.registerCenterTwo.com:9002/eureka/,http://www.registerCenterThree.com:9003/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    hostname: www.zuuiOne.com
+    prefer-ip-address: false
+
+info:
+  app.name: zuuiservice
+
+
+
+#配置zuui客户端
+
+#配置经过zuui网关访问其他服务的路径,
+zuul:
+  #本来通过zuui需要通过服务名来获取服务,这样配置后隐藏了服务名,
+  routes:
+    dept-provider:
+      serviceId: dept-provider
+      path: /deptzuui/**
+  # 这里配置后不能在通过服务名获取 服务了,只能通过隐藏服务名的方式获得服务
+  ignored-services:
+    - detp-provider
+  # 将不安上面配置(/deptzuui/**)方式访问的请求全部忽略,拦截
+  prefix: /xuanxie
+  # 设置公共的前缀,实现隐藏全由路由
+
+
+#参考配置
+#zuul:
+#  routes:
+#    hyconsume: #路由名称
+#      path: /hyservcie/** #路由路径
+#      serviceId: hystrix-consume #配置实例Id
+#      sensitive-headers: cookie #忽略掉敏感头 cookie
+#    hyconsume2:
+#      path: /hyservice2/**  #访问/hyservices/**的服务会跳转到/client接口处理
+#      url: forward:/client
+#  prefix: /consume #路由前缀 访问时需要加该前缀 http://ip:port/consume/hyservice/**
+#  ignored-services: hystrix-consume #被忽略的服务不能通过http://ip:port/serviceId/path/*8访问，屏蔽多个以逗号分隔
+#  ignored-patterns:  /**/test/** #忽略该接口屏蔽该接口，如果屏蔽多个以逗号分隔
+#  ignored-headers: accept-language #用户全局配置忽略的头信息
+#  retryable: true #重试策略
+#  add-host-header: true #重定向

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"><!--导入html约束-->
+
+<head>
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<!--text:接收到的内容按字符纯字符处理-->
+<!--utext:接收的的字符按html处理,有样式-->
+<div th:text="${htmlContent}">  :text</div>
+<div th:utext="${htmlContent}">  :utext</div>
+
+<br/>
+取法一:<br/>
+<h3 th:each="user:${users}" th:text="${user}"></h3>
+取法二:<br/>
+<h3 th:each="user:${users}">[[ user ]]</h3>
+
+</body>
+
+</html>

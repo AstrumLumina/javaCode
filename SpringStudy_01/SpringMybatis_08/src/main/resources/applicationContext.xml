@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--导入规范-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+            http://www.springframework.org/schema/tx
+        https://www.springframework.org/schema/tx/spring-tx.xsd">
+
+<!--DataSource:我们这里只用spring的数据源代替mybatis的配置
+    我们使用Spring提供的jdbc:org.springframework.jdbc.datasoure
+-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mybatisstudy?useUnicode=true&amp;characterEncoding=UTF-8"/>
+        <property name="username" value="root"/>
+        <property name="password"  value="123456"/>
+    </bean>
+
+    <!--配置 sqlSessinFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="dataSource"/>
+        <!--以下可选配置,也可交由mybatis-config.xml来配置-->
+        <!--绑定mybatis配置文件-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--注册mapper-->
+        <property name="mapperLocations" value="classpath:com/xuanxie/mapper/*.xml"/>
+    </bean>
+
+<!--若使用方式二,则可以省略此步
+    这里的sqlSessionTemplate 就相当于原来mybatis中的sqlSession,因此我们这里取别名sqlSession 便于理解使用-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <!--只能使用构造器注入sqlSessionFactory ,因为他没有set方法-->
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+    <bean id="userMapperImpl" class="com.xuanxie.mapper.UserMapperImpl">
+        <property name="sqlSession" ref="sqlSession"/>
+    </bean>
+
+    <bean id="userMapperImpl2" class="com.xuanxie.mapper.UserMapperImpl2">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+
+
+<!--声明开启使用事物-->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <constructor-arg ref="dataSource" />
+    </bean>
+
+    <!--结合aop实现事物的织入-->
+    <!--配置事物的类需要导入tx规范-->
+
+    <!--配置事务通知:设置事务机器类型和处理方式-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!--设置给哪方法配置事物
+        并且可以配置事物的特性-->
+        <tx:attributes>
+            <!--name和方法名一致-->
+            <tx:method name="add" propagation="REQUIRED"/>
+            <tx:method name="query" read-only="true"/>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--配置事务切入的地方-->
+    <aop:config>
+        <aop:pointcut id="txPointCut" expression="execution(* com.xuanxie.mapper.*.*(..))"/>
+         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
+        <!--表示再mapper下的所有 上面配置了的方法都会 添加事务-->
+    </aop:config>
+
+</beans>

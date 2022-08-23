@@ -1,0 +1,8 @@
+com\xuanxie\dao\TeacherMapper.class
+com\xuanxie\dao\StudentMapper.class
+com\xuanxie\pojotwo\Student.class
+com\xuanxie\pojo\Teacher.class
+com\xuanxie\dao\TeacherMapperTwo.class
+com\xuanxie\utils\MybatisUtils.class
+com\xuanxie\pojo\Student.class
+com\xuanxie\pojotwo\Teacher.class

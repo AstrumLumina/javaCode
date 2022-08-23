@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace: 指定绑定一个到接口类,用于实现其接口-->
+<mapper namespace="com.xuanxie.mapper.UserMapper">
+
+    <select id="getUserList" resultType="user">
+        select * from mybatisstudy.users
+    </select>
+
+
+    <!--查询 语句-->
+    <select id="getUserById" parameterType="int"   resultType="com.xuanxie.pojo.User">
+        select * from mybatisstudy.users where id=#{id}
+    </select>
+
+    <!--增 语句-->
+    <insert id="addUser" parameterType="com.xuanxie.pojo.User" >/*一定返回int 不需要指定*/
+    insert into mybatisstudy.Users(id,name,pwd) value(#{id},#{name},#{pwd});
+    </insert>
+
+    <!--删 语句-->
+    <delete id="deleteUser" parameterType="int" >
+        delete from mybatisstudy.users where id=#{id};
+    </delete>
+
+    <!--改 语句-->
+    <update id="updataUser" parameterType="com.xuanxie.pojo.User" >
+        update mybatisstudy.users  set name=#{name},pwd=#{pwd} where id=#{id};
+    </update>
+
+
+    <update id="addUser2" parameterType="Map" >
+        insert into mybatisstudy.users(id,`name`,pwd) values(#{userid},#{username},#{userpwd});
+    </update>
+
+    <select id="getUsersLike" parameterType="String" resultType="com.xuanxie.pojo.User">
+        select * from mybatisstudy.users where name like #{pattern};
+    </select>
+
+
+</mapper>

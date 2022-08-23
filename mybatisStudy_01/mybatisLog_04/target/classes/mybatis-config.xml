@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!--核心配置环境-->
+<configuration>
+    
+    <properties resource="db.properties">
+        <property name="username" value="root"/>
+        <property name="password" value="111111"/>
+    </properties>
+
+    <settings>
+<!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+       <!--标准日志,设置即可用-->
+
+          <setting name="logImpl" value="LOG4J"/>
+        <!--需要导包-->
+    </settings>
+    
+    <typeAliases>
+        <package name="com.xuanxie.pojo"/>
+    </typeAliases>
+
+
+
+    <environments default="test">
+
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/mybatisstudy?useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+
+        <environment id="test">
+            <transactionManager type="JDBC"/><!--数据连接器 有两种 jdbc 和 managed
+            managed:默认关闭连接,从不提交和回滚事物
+            -->
+            <dataSource type="POOLED"><!--数据源:pooled,unpooled,jndi-->
+                <!--属性可以写到配置文件里,解耦合,也可以在代码里配置,当配置文件里的优先级更高,重复设置属性是优先使用配置文件里的-->
+                <property name="driver" value="${driver}"/><!--按照这种方式写可以解耦合,方便修改-->
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <package name="com.xuanxie.dao"/>
+    </mappers>
+
+
+</configuration>

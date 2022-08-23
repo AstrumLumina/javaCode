@@ -1,0 +1,40 @@
+server:
+  port: 7003
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  # mybatis配置文件的位置
+  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.xuanxie.springcloud.pojo
+
+spring:
+  application:
+    name: dept-provider
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db03?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+
+# 配置eureka服务注册地址等
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.registerCenterOne.com:9001/eureka/,http://www.registerCenterTwo.com:9002/eureka/,http://www.registerCenterThree.com:9003/eureka/
+  instance:
+    instance-id: Provider7003 #eureak注册服务监控页的描述信息
+
+#配置actuator监控信息
+info:
+  app.name: xuanxieApp_7003(项目名称) #项目名称
+  company.name: xuanxieCompany_7003(公司名称) #公司名称
+
+#actuator配置不生效
+#management.endpoint.info.enabled=true
+
+#2.0之后即使配置打开，接口也无法访问解决
+management:
+  endpoints:
+    web:
+      exposure:
+        include=*:

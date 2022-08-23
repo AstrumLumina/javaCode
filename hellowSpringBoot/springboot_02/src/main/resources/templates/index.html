@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<p>
+    <span name="tip" th:text="#{login.tip}"></span>
+</p>
+<br/>
+<br/>
+<form action="" method="get">
+    <p>
+        <span th:text="#{login.username}"></span>
+        <input type="text" name="username" th:placeholder="#{login.username}" />
+    </p>
+    <p>
+        <span th:text="#{login.password}"></span>
+        <input type="text" name="password" th:placeholder="#{login.password}" />
+    </p>
+    <p>
+        <span th:text="#{login.remember}"></span>
+        <input type="checkbox" name="rememberme" th:placeholder="#{login.remember}"/>
+    </p>
+    <p>
+        <span th:text="#{login.btn}"></span>
+        <input type="submit" th:placeholder="#{login.btn}" />
+    </p>
+</form>
+<p>
+
+    <a th:href="@{/index(local='zh_CN')}">中文 </a>|
+    <a th:href="@{/index(local='en_US')}"> 英文</a>
+</p>
+
+</body>
+</html>

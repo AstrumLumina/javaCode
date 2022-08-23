@@ -1,0 +1,12 @@
+#自定义网页图标,高版本springboot不支持
+#spring:
+#  mvc:
+#    favicon:
+#     enabled: true
+
+spring:
+  mvc:
+    reactor:
+      debug-agent:
+        enabled: true
+debug: true

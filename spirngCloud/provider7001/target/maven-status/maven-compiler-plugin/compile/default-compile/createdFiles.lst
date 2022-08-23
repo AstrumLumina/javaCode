@@ -1,0 +1,6 @@
+com\xuanxie\springcloud\controller\DeptServiceController.class
+com\xuanxie\springcloud\service\DeptServiceImpl.class
+com\xuanxie\springcloud\controller\ServiceDiscoverContro.class
+com\xuanxie\springcloud\DeptProvider7001.class
+com\xuanxie\springcloud\service\DeptService.class
+com\xuanxie\springcloud\mapper\DeptMapper.class

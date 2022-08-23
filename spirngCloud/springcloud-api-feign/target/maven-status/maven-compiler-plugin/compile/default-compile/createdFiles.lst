@@ -1,0 +1,6 @@
+com\xuanxie\springcloud\service\DeptClienService.class
+com\xuanxie\springcloud\service\DeptServiceCallback.class
+com\xuanxie\springcloud\service\DeptServiceFallbackFactory$1.class
+com\xuanxie\springcloud\config\FallbackFactoryConfig.class
+com\xuanxie\springcloud\pojo\Dept.class
+com\xuanxie\springcloud\service\DeptServiceFallbackFactory.class

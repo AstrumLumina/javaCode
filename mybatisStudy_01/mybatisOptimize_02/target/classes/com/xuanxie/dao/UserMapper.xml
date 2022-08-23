@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace: 指定绑定一个到接口类,用于实现其接口-->
+<mapper namespace="com.xuanxie.dao.UserMapper">
+    <!--select: 查询语句标签,记住方法性质必须和标签类型一致,否则容易出错-->
+    <select id="getUserList" resultType="com.xuanxie.pojo.User">
+/*id 即对应绑定接口的方法名*/
+/*返回类型必须使用全路径,或则别名*/
+        select * from mybatisstudy.users
+    </select>
+
+
+    <!--查询 语句-->
+    <select id="getUserById" parameterType="int"   resultType="com.xuanxie.pojo.User">
+        select * from mybatisstudy.users where id=#{id}
+/*参数等可以直接取用*/
+    </select>
+
+    <!--增 语句-->
+    <insert id="addUser" parameterType="com.xuanxie.pojo.User" >/*一定返回int 不需要指定*/
+        insert into mybatisstudy.Users(id,name,pwd) value(#{id},#{name},#{pwd});
+    </insert>
+
+    <!--删 语句-->
+
+    <!--改 语句-->
+    <update id="updataUser" parameterType="com.xuanxie.pojo.User" >
+        update mybatisstudy.users  set name=#{name},pwd=#{pwd} where id=#{id};
+    </update>
+
+    <delete id="deleteUser" parameterType="int" >
+        delete from mybatisstudy.users where id=#{id};
+    </delete>
+
+    <update id="addUser2" parameterType="Map" >
+        insert into mybatisstudy.users(id,`name`,pwd) values(#{userid},#{username},#{userpwd});
+    </update>
+
+    <select id="getUsersLike" parameterType="String" resultType="com.xuanxie.pojo.User">
+        select * from mybatisstudy.users where name like #{pattern};
+    </select>
+    <!--
+    最好将注释写到sql语句标签外,否则容易出现拼接错误,导致sql语句错误:
+    select * from mybatisstudy.users where name like "%"#{pattern}"%";
+          这里不用这种方法是因为这样容易引起sql注入问题
+          -->
+
+
+
+</mapper>

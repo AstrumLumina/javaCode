@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: DeptConsumer8001-feign
+server:
+  port: 8001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.registerCenterOne.com:9001/eureka/,http://www.registerCenterTwo.com:9002/eureka/,http://www.registerCenterThree.com:9003/eureka/
+    register-with-eureka: false #获取服务,不需要向其注册服务,只拿去服务
+
+#开启服务降级服务
+feign:
+  hystrix:
+    enabled: true
+  circuitbreaker:
+    enabled: true
+
+#配置允许被监控
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: "*"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #这里必须用引号引起,否则会导致报错
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

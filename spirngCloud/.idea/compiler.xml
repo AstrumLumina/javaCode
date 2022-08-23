@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true" procOnly="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springcloudApi" />
+        <module name="DeptConsumer8001" />
+        <module name="provider-feign7001" />
+        <module name="ZuuiService6002" />
+        <module name="ConfigService6003" />
+        <module name="springcloud-api-feign" />
+        <module name="DeptConsumer8001-feign" />
+        <module name="provider7003" />
+        <module name="provider7002" />
+        <module name="RemoteConfigedProvider7004" />
+        <module name="EurekaService9001" />
+        <module name="provider7001" />
+        <module name="HystrixServiceDashboard" />
+        <module name="EurekaService9002" />
+        <module name="EurekaService9003" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8" />
+  </component>
+</project>

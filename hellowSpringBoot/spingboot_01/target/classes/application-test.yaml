@@ -1,0 +1,13 @@
+# springboot多环境配置
+#配置测试环境
+server:
+  port: 8090
+
+
+#多套环境的配置还可以可以在一个文件中进行,以三个杆(减号)分隔配置
+---
+#第二套配置
+server:
+  port: 8091
+spring:
+  profiles: dev #设置该配置的后缀名

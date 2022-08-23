@@ -1,0 +1,15 @@
+javaBase:                  web入门,css,js,html
+javaweb-jdbc:          jdbc复习
+jdbcTest:                   java操作数据库,c3p0,dbcp数据库连接池
+maven_test:              maven,servlet,req,resp,cookies,转发,重定向,文件下载
+maven-web-01:       maven搭建网站项目,测试发布网站
+web-file:                   文件上传,下载
+web-filter:                请求过滤
+web-mysql:              servlet与数据库,MVC结构网页开发
+mybatisStudy_01     mybatis学习
+JavaEmail                 java邮件收发
+
+
+
+
+

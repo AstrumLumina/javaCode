@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!--核心配置环境-->
+<configuration>
+    <!--注意,各种配置需要按顺序放置在这里-->
+
+    <!--配置文件优化-->
+    <!--引入外部配置文件-->
+    <properties resource="db.properties">
+        <!--还可一在这里新增属性,若重复设置,则以配置文件中原来的为准-->
+        <property name="username" value="root"/>
+        <property name="password" value="111111"/>
+    </properties>
+
+    <!--别名优化-->
+    <typeAliases>
+        <typeAlias type="com.xuanxie.pojo.User" alias="user"/><!--为一个类取别名,可以自定义别名,一般设置为类名的小写-->
+        <package name="com.xuanxie.pojo"/><!--为包下的所有pojo类取别名,别名为类名的小写,若有注解为其去了别名,则按注解来-->
+    <!--当类比较多是用包别名比较方便-->
+
+        <!--其自带一些别名 例如:
+        int  Interger
+        _int  int
+        -->
+    </typeAliases>
+
+
+    <!--可以有多套环境,以下指定了默认配置环境-->
+    <environments default="test"><!--指定使用 哪套环境-->
+
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/mybatisstudy?useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+
+        <environment id="test">
+            <transactionManager type="JDBC"/><!--数据连接器 有两种 jdbc 和 managed
+            managed:默认关闭连接,从不提交和回滚事物
+            -->
+            <dataSource type="POOLED"><!--数据源:pooled,unpooled,jndi-->
+                <!--属性可以写到配置文件里,解耦合,也可以在代码里配置,当配置文件里的优先级更高,重复设置属性是优先使用配置文件里的-->
+                <property name="driver" value="${driver}"/><!--按照这种方式写可以解耦合,方便修改-->
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--每一个mapper.xml都必须在核心配置文件中注册
+    Mapper注册有4种方式-->
+    <mappers>
+        <package name="com.xuanxie.dao"/>
+    </mappers>
+
+
+</configuration>

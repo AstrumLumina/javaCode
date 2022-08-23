@@ -1,0 +1,76 @@
+#配置文件的优先级  classpath:<classpath/config<file<file/config
+
+#开启调试模式
+debug: true
+
+#设置端口,测试配置文件优先级
+server:
+  port: 8080
+
+#springboot配置多套环境是,选择激活那套配置
+spring:
+  profile:
+    active: test  #只需些application- 后面的即可
+
+
+
+
+#存放普通的 key-value
+key: value
+
+#集合
+list1: ["xuaxie","fsdf","fsd","fsdddf"]
+
+list2:
+  - 1
+  - 2
+  - 3
+
+
+
+#map
+map2: {key1: val1,key2: val2}
+
+map1:
+  key1: val1
+  key2: val2
+  key3: val3
+
+#存放 对象 用于给注入的person对象赋值
+person:
+  dog:
+    dog-name: 旺财  #自动与dogName匹配
+    age: 2
+    sex: 公
+  name: xuanxie
+  age: 19
+  ishappy: true
+  bithday: 2021/2/1  # 日期不能些成 2021-2-1
+  list:
+    - code
+    - music
+    - girl
+  map:
+    k1: v1
+    k2: v2
+    k3: v3
+
+
+#yaml 可以使用el表达式
+filename: ${random.uuid}.text
+
+dogname3: 旺财
+dogname2: 招财
+dog:
+  age: ${random.int}
+  dogName: dognameis${dogname2:旺财} #如果dogname1有值  ,则取name1的,否则取name2的
+  #注意:  如如果该属性为String类型,则会视为给dogname1赋值为空,从中取出空值,而不是视为该值为定义
+  sex: 母
+
+email:
+  emailAddress: dsfs
+email2:
+  emailAddress: 2478932@qq.com
+
+
+

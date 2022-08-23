@@ -1,0 +1,37 @@
+{
+  "groups": [
+    {
+      "name": "dog",
+      "type": "com.xuanxie.pojo.Dog",
+      "sourceType": "com.xuanxie.pojo.Dog"
+    },
+    {
+      "name": "email2",
+      "type": "com.xuanxie.pojo.MyEmail",
+      "sourceType": "com.xuanxie.pojo.MyEmail"
+    }
+  ],
+  "properties": [
+    {
+      "name": "dog.age",
+      "type": "java.lang.Integer",
+      "sourceType": "com.xuanxie.pojo.Dog"
+    },
+    {
+      "name": "dog.dog-name",
+      "type": "java.lang.String",
+      "sourceType": "com.xuanxie.pojo.Dog"
+    },
+    {
+      "name": "dog.sex",
+      "type": "java.lang.String",
+      "sourceType": "com.xuanxie.pojo.Dog"
+    },
+    {
+      "name": "email2.email-address",
+      "type": "java.lang.String",
+      "sourceType": "com.xuanxie.pojo.MyEmail"
+    }
+  ],
+  "hints": []
+}

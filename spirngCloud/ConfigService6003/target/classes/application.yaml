@@ -1,0 +1,25 @@
+server:
+  port: 6003
+
+spring:
+  application:
+    name: configservice
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/keyboardancer/configs.git  #注意复制链接后要加上.git后缀
+          #uri: https://gitee.com/keyboardancer/configs/tree/master/springcloudstudy
+
+          search-paths: #搜索目录
+#           - 自己的目录名称
+#           - springcloudstudy
+            - bar-cloudtestconfig
+#         force-pull: true
+#         username: 自己的github用户名
+#         password: 自己的github密码
+        #读取分支
+#        label: master # 读取分支 分支
+
+#  Config Server就会在Git仓库根目录、foo子目录、以及所有以bar开始的子目录中查找配置文件
+#也可以向上面一样指定读取的目录,经测 给项目试在foo和bar下的页无法访问,最好放到更目录下,或者指定读取目录

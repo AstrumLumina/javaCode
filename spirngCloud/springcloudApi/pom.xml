@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spirngCloud</artifactId>
+        <groupId>org.xaunxie</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>springcloudApi</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <!--当前模块,如果父模块的依赖管理中添加了该依赖,则则合理不需要些版本号,使用父模块的版本-->
+   <!--
+   -Djps.track.ap.dependencies=false
+   -->
+    <!--在spirngbootdependence中已经有管理了,
+    但是其管理的版本与jdk冲突(可以用于jdk17),
+    因此需要自己指定新版的lombok,防止导入哪里的不可用的lombok
+    lombok不放在父工程里面管理:
+    如果放了,导入lombok时不确定导入的是我们管理的还是spirngboot管理的lombok
+    经过测试,导入的是spirngboot的,导致不可用,因此最好在模块中明确导入
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+            <version>1.18.20</version>
+        </dependency>
+    </dependencies>
+
+</project>

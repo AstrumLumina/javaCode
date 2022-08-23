@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact name="mp3Montage:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/mp3Montage_jar</output-path>
+    <root id="root">
+      <element id="archive" name="mp3Montage.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="mp3Montage" />
+      </element>
+      <element id="directory" name="libs" />
+    </root>
+  </artifact>
+</component>

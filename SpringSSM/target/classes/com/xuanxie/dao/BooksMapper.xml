@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuanxie.dao.BooksMapper">
+    <insert id="addBooks" parameterType="books">
+        insert into springssmbuild.books(bookID, bookName, bookCounts, detail)
+        VALUE (#{bookID}, #{bookName}, #{bookCounts},#{detail});
+    </insert>
+
+    <update id="updateBook" parameterType="books">
+        update springssmbuild.books
+        set bookName=#{bookName},bookCounts=#{bookCounts},detail=#{detail}
+        where bookID = #{bookID} ;
+    </update>
+
+    <delete id="deleteBooks" parameterType="_int">
+        delete from springssmbuild.books where bookID=#{bookID};
+    </delete>
+
+    <select id="getBooksById" parameterType="_int" resultType="books">
+        select * from springssmbuild.books where bookID=#{bookID};
+    </select>
+    <select id="queryAllBooks" resultType="books">
+        select * from springssmbuild.books;
+    </select>
+    <select id="queryBooksLike" resultType="books" parameterType="string">
+        select * from springssmbuild.books where bookName like "%"#{bookName}"%" ;
+    </select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--c 和 p 命名空间简化注入 ,需要导入规范-->
+
+    <!--P命名空间的使用,p相当property,简化了set注入方式-->
+    <bean id="userP" class="com.xuanxie.pojo.User" p:age="20" p:name="xuenxie"/>
+
+    <!--c命名空间的使用,c相当constractor,简化了构造方法注入方式-->
+    <bean id="userC" class="com.xuanxie.pojo.User" c:age="21" c:name="wang"/>
+
+</beans>

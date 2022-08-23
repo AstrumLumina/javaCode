@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FormLearning</title>
+</head>
+<body>
+<h2>注册</h2>
+<!-- form  表单
+action : 表单提交地址
+method : 提交方式,get: 可以在url中看到传输的信息,高效但不安全
+                post :比较安全,可以在审查元素时看到内容 ,可以传输大文件
+value:默认值 radio(单选框) 必须要有默认值
+radio: 单选需要同过同名来限制
+checkbox: 多选框
+
+-->
+
+<!--   method="post" -->
+<form  action="Demon1.html"    method="get"/>
+<p>名子:<input type="text" name="username"></p>
+<p>密码:<input type="password" name="password"></p>
+<p><input type="submit" > <input type="reset"></p>
+
+<p>
+    性别:
+    <input type="radio" value="男" name="sex">男
+    <input type="radio" value="女" name="sex">女
+</p>
+<p>
+    爱好:
+    <input type="checkbox" value="sleep" name="hobby">睡觉
+    <input type="checkbox" value="study" name="hobby">学习
+    <input type="checkbox" value="play" name="hobby">游戏
+</p>
+<p>按钮:
+    <input type="button" value="点击开始" name="btn_start">
+</p>
+<p> 图片按钮 :点击图片,以提交表单
+    <br/>
+    <input type="image" src="../resourse/image/picture2.jpg"
+           width="150"
+           height="320"
+    />
+</p>
+<p>(下拉框) 国家:
+    <select name="country"><!--列表名-->
+        <option value="china" selected>中国</option>  <!--selected 默认选择-->
+        <option value="american">美国</option>
+        <option value="inida">印度</option>
+    </select>
+</p>
+<p> (文本域)请输入文本:
+    <br/>
+    <textarea name="text" cols="55" rows="15"></textarea>
+</p>
+<hr/>
+<p>文件域:请提交文件
+    <br/>
+    <input type="file" name="files">
+    <input type="button" name="subfiles" value="提交文件">
+</p>
+
+<!--带验证的输入框-->
+<p>邮箱(验证):
+    <input type="email" name="email">
+</p>
+<p>自定义邮箱验证:
+<input type="text" name="secureemail"
+       placeholder="请输入邮箱"
+       pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/"
+       required>
+</p>
+<p>URL(验证):
+    <input type="url" name="url">
+</p>
+<p>数字输入如和验证:
+    <br/>
+    商品数量:
+    <input type="number" name="numbers" max="100" min="0" step="10">
+</p>
+<p>(滑块)调节音量:
+    <input type="range" name="voice" max="10" min="0" step="2">
+</p>
+<p>
+    <label for="mark">搜索框:可以快速的清除输入内容</label>
+    <input type="search"  id="mark" name="searchcontent">
+</p>
+
+<!--为表单设置属性
+disabled:
+hidden:
+readonly:
+-->
+<!--增强鼠标的可以用;
+ <label for="mark">搜索框:可以快速的清除输入内容</label>
+-->
+<!--表单验证:
+palceholder :框中提示内容
+required: 非空限制
+pattern:正则表达式验证
+
+-->
+
+
+<hr/>
+<p><input type="submit" vlaue="提交" > <input type="reset" value="重置表单"></p>
+</form>
+
+</body>
+</html>
+

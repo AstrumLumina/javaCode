@@ -1,0 +1,3 @@
+com\xuanxie\springcloud\config\RestTemplateConfig.class
+com\xuanxie\springcloud\controller\DeptConsumerContro.class
+com\xuanxie\springcloud\DeptConsumer8001.class

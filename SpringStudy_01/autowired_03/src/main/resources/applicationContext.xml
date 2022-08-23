@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--导入规范-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--开启注解支持-->
+    <context:annotation-config/>
+
+
+    <bean id="cat" class="com.xuanxie.pojo.Cat">
+
+    </bean>
+    <bean id="dog" class="com.xuanxie.pojo.Dog"/>
+    <bean id="dog2" class="com.xuanxie.pojo.Dog"/>
+
+    <bean id="person" class="com.xuanxie.pojo.Person">
+        <property name="cat" ref="cat"></property>
+        <property name="dog" ref="dog"/>
+        <property name="name" value="xuanxie"/>
+    </bean>
+
+    <!--自动装配-->
+    <!--byname 再容器内查找和id和该类属性名一致的bean去构造-->
+    <bean id="person2" class="com.xuanxie.pojo.Person" autowire="byName">
+        <property name="name" value="xuanxie"/>
+    </bean>
+
+    <!--byname 再容器内查找和bean的类型和该类属性名类型一致的bean去构造-->
+<!--    <bean id="person3" class="com.xuanxie.pojo.Person" autowire="byType">-->
+<!--        <property name="name" value="xuanxie"/>-->
+<!--    </bean>-->
+
+    <!--使用注解注入-->
+    <bean id="person4" class="com.xuanxie.pojo.Person"/>
+
+</beans>

@@ -1,0 +1,4 @@
+server:
+  port: 8083
+
+ #配置文件的优先级  classpath:<classpath/config<file<file/config

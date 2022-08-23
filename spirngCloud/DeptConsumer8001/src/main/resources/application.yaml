@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: DeptConsumer8001
+server:
+  port: 8001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://www.registerCenterOne.com:9001/eureka/,http://www.registerCenterTwo.com:9002/eureka/,http://www.registerCenterThree.com:9003/eureka/
+    register-with-eureka: false #获取服务,不需要向其注册服务,只拿去服务

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/tx
+        https://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--扫描service下的相关的bean注解-->
+    <context:component-scan base-package="com.xuanxie.service"/>
+
+    <!--BookServiceImpl注册到ioc容器中-->
+    <bean id="booksServiceImpl" class="com.xuanxie.service.BooksServiceImpl">
+        <property name="booksMapper" ref="booksMapper"/>
+        <!--报红说明这些配置文件还没有整合到一起-->
+    </bean>
+
+    <!--配置事务管理器-->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--事务切入-->
+    <!--配置事务通知:设置事务机器类型和处理方式-->
+    <tx:advice id="serviceAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="addBooks" propagation="REQUIRED"/>
+            <tx:method name="deleteBooks"/>
+            <tx:method name="updateBook"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--配置事务切入的地方-->
+    <aop:config>
+        <aop:pointcut id="txPointCut" expression="execution(* com.xuanxie.service.*.*(..))"/>
+        <aop:advisor advice-ref="serviceAdvice" pointcut-ref="txPointCut"/>
+        <!--表示再mapper下的所有 上面配置了的方法都会 添加事务-->
+    </aop:config>
+</beans>

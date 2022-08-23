@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xuanxie.dao.TeacherMapperTwo">
+
+
+    <select id="getTeachers" parameterType="_int" resultMap="TeacherAndStu">
+        select s.name sname,s.id sid,t.name tname,t.id tid
+        from students s,teachers t
+        where s.tid=t.id and t.id=#{tid}
+    </select>
+    <resultMap id="TeacherAndStu" type="com.xuanxie.pojotwo.Teacher">
+        <result property="name" column="tname"/>
+        <result property="id" column="tid"/>
+        <collection property="studentList" ofType="com.xuanxie.pojotwo.Student">
+            <result property="id" column="sid"/>
+            <result property="name" column="sname"/>
+            <result property="tid" column="tid"/>
+        </collection>
+    </resultMap>
+
+    <select id="getTeachers2" parameterType="_int" resultMap="TeacherAndStu2">
+        select * from teachers where id=#{tid};
+    </select>
+    <resultMap id="TeacherAndStu2" type="com.xuanxie.pojotwo.Teacher">
+        <result property="name" column="name"/>
+        <result property="id" column="id"/>
+        <collection property="studentList" javaType="ArrayList" ofType="com.xuanxie.pojotwo.Student"
+                    select="getMyStu" column="id">
+            <result property="id" column="sid"/>
+            <result property="name" column="sname"/>
+            <result property="tid" column="tid"/>
+        </collection>
+    </resultMap>
+    
+    <select id="getMyStu" resultType="com.xuanxie.pojotwo.Student" parameterType="_int">
+        select * from students where tid=#{id};
+    </select>
+
+</mapper>
