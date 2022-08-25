@@ -1,0 +1,70 @@
+spring:
+  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    password: 123456
+#    username: root
+#    url: jdbc:mysql://localhost:3306/mybaitsplusstudy?useSSL=false&useUnicode=true&characterEncoding=utf-8
+  #   新版的sql效率分析需要使用p6spy去连接数据库
+  # mysql驱动
+  # driver-class-name: com.mysql.jdbc.Driver
+  # p6spy驱动
+  # 需要配合spy.properties配置文件一起用
+  # 可以劫持数据源，监控分析SQL
+    username: root
+    password: 123456
+    url: jdbc:p6spy:mysql://localhost:3306/mybaitsplusstudy?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+
+
+
+
+#配置mybaitsplus日志,用于观察自动帮我们生成的sql语句
+#启动 mybatis 本身的 log 日志
+# 方式一
+mybatis-plus:
+  #配置日志,可以查看帮我们生成的sql语句是什么样的
+#  configuration:
+#   log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      #配置逻辑删除
+      logic-delete-field: deleted #这里必须要配,但实体类上可要可不要
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+# Logger Config
+#logging:
+#  level:
+#    com.baomidou.mybatisplus.samples: debug
+
+# 配置sql语句性能效率分析 ,用到了p6spy,相关配置放到 spy配置文件中
+
+##3.2.1以上使用
+#  modulelist=com.baomidou.mybatisplus.extension.p6spy.MybatisPlusLogFactory,com.p6spy.engine.outage.P6OutageFactory
+#  #3.2.1以下使用或者不配置
+#  #modulelist=com.p6spy.engine.logging.P6LogFactory,com.p6spy.engine.outage.P6OutageFactory
+#  # 自定义日志打印
+#  logMessageFormat=com.baomidou.mybatisplus.extension.p6spy.P6SpyLogger
+#  #日志输出到控制台
+#  appender=com.baomidou.mybatisplus.extension.p6spy.StdoutLogger
+#  # 使用日志系统记录 sql
+#  #appender=com.p6spy.engine.spy.appender.Slf4JLogger
+#  # 设置 p6spy driver 代理
+#  deregisterdrivers=true
+#  # 取消JDBC URL前缀
+#  useprefix=true
+#  # 配置记录 Log 例外,可去掉的结果集有error,info,batch,debug,statement,commit,rollback,result,resultset.
+#  excludecategories=info,debug,result,commit,resultset
+#  # 日期格式
+#  dateformat=yyyy-MM-dd HH:mm:ss
+#  # 实际驱动可多个
+#  #driverlist=org.h2.Driver
+#  # 是否开启慢SQL记录
+#  outagedetection=true
+#  # 慢SQL记录标准 2 秒
+#  outagedetectioninterval=2
+
+
+# 日志配置方式二 application.yml 中增加配置，指定 mapper 文件所在的包
+#logging:
+#  level:
+#    com.baomidou.example.mapper: debug
